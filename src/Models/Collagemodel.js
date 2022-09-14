@@ -10,6 +10,7 @@ const CollageSchema = mongoose.schema({
         required: true,
     },
     logoLink: {
+        type:String,
         require: true
     },
     isDeleted: {

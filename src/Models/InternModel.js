@@ -7,7 +7,8 @@ const InternSchema = mongoose.schema({
     email: {
         required: true,
         unique: true,
-        trim: true
+        trim: true,
+        lowwercase:true
     },
 
 
@@ -24,8 +25,8 @@ const InternSchema = mongoose.schema({
         trim: true
     },
 
-    idDeleted: {
-        Boolean,
+    isDeleted: {
+        type:Boolean,
         default: false
     },
 
