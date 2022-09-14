@@ -23,7 +23,7 @@ const isValidName = function (name) {
 
 const createIntern = async function (req, res) {
     try {
-        let { name, email, mobile, CollageId } = req.body
+        let { name, email, mobile, CollegeId } = req.body
 
         if (Object.keys(req.body).length < 1)
          {
@@ -60,7 +60,7 @@ const createIntern = async function (req, res) {
         let checkMobile = await InternModel.findOne({ mobile: mobile, isDeleted:false})
         if (checkMobile) return res.status(400).send({status:false, message: "Mobile Already Registered" })
       
-        let collegedetails = await CollegeModel.findOne({ CollageId: CollageId, isDeleted: false })
+        let collegedetails = await CollegeModel.findOne({ CollegeId: CollegeId, isDeleted: false })
         if (!collegedetails) return res.status(404).send({ status: false, message: 'No such college Name Not Found!'});
         
 

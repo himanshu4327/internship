@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
-const CollageSchema = mongoose.schema({
+const CollageSchema = new mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         required: true,
         unique: true,
     },
     fullName: {
-        type: string,
+        type: String,
         required: true,
     },
     logoLink: {
@@ -18,5 +18,5 @@ const CollageSchema = mongoose.schema({
         default: false
     }
 }, { timestamp: true })
-mondule.export = mongoose.model('College', CollageSchema)
+module.export = mongoose.model('College', CollageSchema)
 
