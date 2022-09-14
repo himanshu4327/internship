@@ -24,7 +24,7 @@ const createCollege = async function (req, res) {
         }
 
         const { name, fullname, logoLink } = data;
-        if (Object.keys(data).length > 4) {
+        if (Object.keys(data).length > 3) {
             return res.status(400).send({ status: false, message: "invalid data entry inside request body" })
         }
         if (!isValid(name)) {
