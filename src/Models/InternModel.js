@@ -24,8 +24,8 @@ const InternSchema = mongoose.schema({
         trim: true
     },
 
-    idDeleted: {
-        Boolean,
+    isDeleted: {
+        type: Boolean,
         default: false
     },
 
