@@ -1,14 +1,16 @@
 const mongoose = require('mongoose')
+const ObjectId = mongoose.Schema.Types.ObjectId;
 const InternSchema = mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         required: true,
     },
     email: {
+        type: String,
         required: true,
         unique: true,
         trim: true,
-        lowwercase:true
+        lowercase:true
     },
     mobile: {
         require: true,
@@ -17,9 +19,9 @@ const InternSchema = mongoose.Schema({
         unique: true
     },
 
-    CollageId: {
+    CollegeId: {
         type: ObjectId,
-        ref: Collage,
+        ref: 'Collage',
         trim: true
     },
 
@@ -30,4 +32,4 @@ const InternSchema = mongoose.Schema({
 
 
 }, { timestamp: true })
-module.export = mongoose.model('intern', InternSchema)
+module.export = mongoose.model('Intern', InternSchema)
