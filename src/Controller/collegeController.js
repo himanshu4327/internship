@@ -31,7 +31,7 @@ const createCollege = async function (req, res) {
             return res.status(400).send({ status: false, msg: "name is mandatory field" })
         }
         let checkName = await CollegeModel.findOne({ name: name })
-        if (checkName) {
+        if (!checkName) {
             return res.status(400).send({ status: false, msg: "please try with diffrent college name" })
         }
         if (!isValid(fullname)) {
