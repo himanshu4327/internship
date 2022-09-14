@@ -1,10 +1,12 @@
 const mongoose = require('mongoose')
-const InternSchema = mongoose.schema({
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const InternSchema = new mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         required: true,
     },
     email: {
+        type:String,
         required: true,
         unique: true,
         trim: true,
@@ -19,9 +21,9 @@ const InternSchema = mongoose.schema({
         unique: true
     },
 
-    CollageId: {
+    CollegeId: {
         type: ObjectId,
-        ref: Collage,
+        ref: "College",
         trim: true
     },
 

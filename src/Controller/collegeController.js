@@ -1,4 +1,4 @@
-const CollegeModel = require("../Models/collagemodel");
+const CollegeModel = require("../Models/CollegeModel");
 
 
 
