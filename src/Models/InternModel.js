@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const InternSchema = mongoose.schema({
+const InternSchema = mongoose.Schema({
     name: {
         type: string,
         required: true,
@@ -10,8 +10,6 @@ const InternSchema = mongoose.schema({
         trim: true,
         lowwercase:true
     },
-
-
     mobile: {
         require: true,
         trim: true,

@@ -12,6 +12,11 @@ const isValidRequest = function(object) {
     return Object.keys(object).length > 0
 }
 
+const isValidValue = function(value) { // Validation for Strings/ Empty strings
+    if (typeof value !== "string") return false;
+    else if (value.trim().length == 0) return false;
+    else return true;
+};
 
 const createCollege = async function(req, res) {
     try {
@@ -49,22 +54,7 @@ const createCollege = async function(req, res) {
         return res.status(500).send({ err: err.message })
     }
 }
-const Models = require("../Models/CollageModel")
 
-
-<<<<<<< HEAD
-
-
-
-
-const isValidValue = function(value) { // Validation for Strings/ Empty strings
-    if (typeof value !== "string") return false;
-    else if (value.trim().length == 0) return false;
-    else return true;
-};
-
-=======
->>>>>>> 95126be72383c4c976af69ae914d10849cc56fe4
 const collegeDetails = async function(req, res) {
     try {
         let collegeName = req.query.collegeName
@@ -81,15 +71,9 @@ const collegeDetails = async function(req, res) {
                 logolink: College.logolink
 
             })
-<<<<<<< HEAD
-        const getCollegeId = college._id; // Extracting _id from college & using it to get interns
 
         const internData = await InternModel.find({ isDeleted: false, collegeId: getCollegeId }).select({ name: 1, email: 1, mobile: 1 })
-=======
         const getCollegeId = college._id; 
-
-        const internData = await InternModel.find({ isDeleted: false, collegeId: getCollegeId }).select({ _id: 1, name: 1, email: 1, mobile: 1 })
->>>>>>> 95126be72383c4c976af69ae914d10849cc56fe4
 
         if (internData.length === 0) return res.status(400).send({ status: false, mrssage: "no college intern are found" })
         const data = {...collageDetails,
@@ -102,13 +86,5 @@ const collegeDetails = async function(req, res) {
     }
 }
 
-<<<<<<< HEAD
-module.exports.collegeDetails = collegeDetails
-
 module.exports.createCollege = createCollege
-=======
-
-module.exports.createCollege = createCollege
-
 module.exports.collegeDetails = collegeDetails
->>>>>>> 95126be72383c4c976af69ae914d10849cc56fe4
