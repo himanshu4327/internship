@@ -27,9 +27,10 @@ const createCollege = async function (req, res) {
                 .status(400)
                 .send({ status: false, message: "Collage data is required" });
         }
-        let { name, fullName, logoLink } = data;
+
+        const { name, fullname, logoLink } = data;
         if (Object.keys(data).length > 3) {
-            return res.status(400).send({ status: false, message: "Invalid data entry inside request body" })
+            return res.status(400).send({ status: false, message: "invalid data entry inside request body" })
         }
         if (!isValidString(name)) {
             return res.status(400).send({ status: false, msg: "Name should be string" })

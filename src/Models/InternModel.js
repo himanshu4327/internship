@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const ObjectId = mongoose.Schema.Types.ObjectId;
-const InternSchema = mongoose.Schema({
+const InternSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -21,7 +21,7 @@ const InternSchema = mongoose.Schema({
 
     CollegeId: {
         type: ObjectId,
-        ref: 'Collage',
+        ref: "College",
         trim: true
     },
 

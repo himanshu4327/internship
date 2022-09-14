@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const CollageSchema = mongoose.Schema({
+const CollegeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -19,4 +19,4 @@ const CollageSchema = mongoose.Schema({
         default: false
     }
 }, { timestamp: true })
-module.exports = mongoose.model('College', CollageSchema)
+module.exports = mongoose.model('College', CollegeSchema)
