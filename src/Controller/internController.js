@@ -1,6 +1,6 @@
 const InternModel = require("../Models/InternModel")
 const CollegeModel = require("../Models/Collegemodel")
-// const mongoose = require('mongoose')
+
 
 const isValid = function (value) {
     if (typeof value === 'undefined' || value === null) return false
@@ -20,6 +20,7 @@ const isValidName = function (name) {
     const nameRegex = /^[a-zA-Z]+(\s[a-zA-Z]+)?$/
     return nameRegex.test(name)
 }
+
 
 const createIntern = async function (req, res) {
     try {

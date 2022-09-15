@@ -10,14 +10,19 @@ const isValidString = function (value) {
     } else {
         return false;
     }
-};
-
+}
 const isValidRequest = function (object) {
     if (Object.keys(object).length === 0) {
         return false
     } else {
         return true
     }
+}
+const isValidLink = function (link) {
+     const url =/(http|https):\/\/.+\.(jpg|jpeg|png)$/
+  
+   return url.test(link)
+        
 }
 
 const createCollege = async function (req, res) {
@@ -45,6 +50,12 @@ const createCollege = async function (req, res) {
         if (!isValidString(logoLink)) {
             return res.status(400).send({ status: false, message: "Please provide logo" })
         }
+        if (!isValidLink(logoLink)) {
+                return res.status(400).send({ message: "Enter a valid url" })
+            }
+            let LogoLink = logoLink.trim() 
+            req.body.logoLink=LogoLink
+        
         const newCollege = await CollegeModel.create(data)
         return res.status(201).send({ status: true, data: newCollege })
     } catch (error) {
