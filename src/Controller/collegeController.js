@@ -42,7 +42,7 @@ const createCollege = async function (req, res) {
         }
         let checkName = await CollegeModel.findOne({name: name})
         if (checkName) {
-            return res.status(404).send({ status: false, message: "College already exists" })
+            return res.status(409).send({ status: false, message: "College already exists" })
         }
         if (!isValidString(fullName)) {
             return res.status(400).send({ status: false, message: "Fullname should be string" })
@@ -65,11 +65,16 @@ const createCollege = async function (req, res) {
 }
 
 const collegeDetails = async function (req, res) {
-    try {
-        let collegeName = req.query.collegeName
+    try { 
+         let queryParams = req.query
+        let collegeName = queryParams.collegeName
+
+        if(!isValidRequest(queryParams)){
+            return res.status(400).send({ status: false, message: "please provide queryParams"})
+        }
 
         if (!isValidString(collegeName)) {
-            return res.status(201).send({ status: false, message: "Please Enter the valid College Name" })
+            return res.status(400).send({ status: false, message: "Please Enter the valid College Name" })
         }
         let college = await CollegeModel.findOne({ name: collegeName, isDeleted: false })
         if (!college) {
@@ -85,7 +90,7 @@ const collegeDetails = async function (req, res) {
         const internData = await InternModel.find({ isDeleted: false, collegeId: getCollegeId }).select({ name: 1, email: 1, mobile: 1 })
 
         if (internData.length === 0) {
-            return res.status(400).send({ status: false, message: "No college intern are found" })
+            return res.status(404).send({ status: false, message: "No college intern are found" })
         }
         const data = {
             ...collageDetails,
