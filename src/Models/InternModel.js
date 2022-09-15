@@ -19,7 +19,7 @@ const InternSchema = new mongoose.Schema({
         unique: true
     },
 
-    CollegeId: {
+    collegeId: {
         type: ObjectId,
         ref: "College",
         trim: true
@@ -30,6 +30,5 @@ const InternSchema = new mongoose.Schema({
         default: false
     },
 
-
 }, { timestamp: true })
-module.export = mongoose.model('Intern', InternSchema)
+module.exports = mongoose.model('Intern', InternSchema)
