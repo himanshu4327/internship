@@ -42,7 +42,7 @@ const createCollege = async function (req, res) {
         }
         let checkName = await CollegeModel.findOne({name: name})
         if (checkName) {
-            return res.status(409).send({ status: false, message: "College already exists" })
+            return res.status(400).send({ status: false, message: "College already exists" })
         }
         if (!isValidString(fullName)) {
             return res.status(400).send({ status: false, message: "Fullname should be string" })
